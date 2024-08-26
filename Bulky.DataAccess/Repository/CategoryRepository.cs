@@ -18,8 +18,7 @@ namespace Bulky.DataAccess.Repository
         {
             _db = db;
         }
-
-        public void Save()
+               public void Save()
         {
             _db.SaveChanges();
         }
