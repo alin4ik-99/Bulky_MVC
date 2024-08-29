@@ -5,8 +5,9 @@ using Bulky.Models.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
-namespace BulkyWeb.Controllers
+namespace BulkyWeb.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -22,7 +23,7 @@ namespace BulkyWeb.Controllers
 
         public IActionResult Create()
         {
-            
+
             return View();
         }
 
@@ -50,14 +51,15 @@ namespace BulkyWeb.Controllers
 
         public IActionResult Edit(int? id)
         {
-            if (id == null || id==0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
 
-            var categoryFromDb = _unitOfWork.Category.Get(u=>u.Id == id);
+            var categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);
 
-            if (categoryFromDb == null) {
+            if (categoryFromDb == null)
+            {
                 return NotFound();
             }
 
